@@ -1,0 +1,12 @@
+body {
+  background-color: pink;
+  font-family: "Helvetica Neue", Helvetica, Arial, Sans-serif;
+  font-size: 14px;
+}
+#countdown {
+  width: 500px;
+  margin: 200px auto;
+  text-align: center;
+  font-size: 4em;
+  color: #fff;
+}
