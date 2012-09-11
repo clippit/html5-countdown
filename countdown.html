@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>HTML5 Countdown</title>
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+    <div role="main">
+        <section id="countdown"></section>
+    </div>
+    <script type="text/javascript">
+        //or this? http://www.diveintojavascript.com/projects/javascript-sprintf
+        String.prototype.format = function() {
+          var args = arguments;
+          return this.replace(/{(\d+)}/g, function(match, number) { 
+            return typeof args[number] != 'undefined'
+              ? args[number]
+              : match
+            ;
+          });
+        };
+
+        setInterval(function() {
+            //update clock
+            var now = new Date();
+            var date_string = '{0}:{1}:{2}'.format(now.getHours(), now.getMinutes(), now.getSeconds());
+            document.getElementById('countdown').textContent = date_string;
+
+            //change background color
+            var random_color = String.prototype.format.apply('rgb({0},{1},{2})', [256, 256, 256].map(function(v) {
+                return Math.floor(v*Math.random());
+            }));
+            document.body.style.backgroundColor = random_color;
+        }, 1000);
+    </script>
+</body>
+</html>
